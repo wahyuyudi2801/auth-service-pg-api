@@ -56,3 +56,7 @@ npm run db:migrate
 ```bash
 npm run db:migrate:undo
 ```
+
+
+### Challanges
+#### 1. Pastikan REST-API untuk Department & Auth bisa Running.
