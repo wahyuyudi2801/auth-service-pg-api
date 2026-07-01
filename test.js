@@ -18,19 +18,56 @@
 // const fullstack = [...be, ...fe];
 // console.log(fullstack)
 
-const emp = {
-    async findAll() {
-        const result = await db.query("SELECT * FROM employees")
-        return result.rows
-    },
+// const emp = {
+//     async findAll() {
+//         const result = await db.query("SELECT * FROM employees")
+//         return result.rows
+//     },
 
-    async foundEmp(email) {
-        const result = await db.query("SELECT * FROM employees WHERE email = :email", {
-            email
-        });
-        return result.rows
+//     async foundEmp(email) {
+//         const result = await db.query("SELECT * FROM employees WHERE email = :email", {
+//             email
+//         });
+//         return result.rows
+//     }
+// }
+
+// const listOfEmp = emp.findAll()
+// const foundEmp = emp.foundEmp()
+
+class Employee {
+    emp = [];
+
+    create(name, email, age) {
+        this.emp.push({
+            name,
+            email,
+            age
+        })
+    }
+
+    findAll() {
+        return this.emp;
+    }
+
+    foundEmpByEmail(email) {
+        const result = this.emp.find((value) => value.email.includes(email))
+        if(!result) {
+            return "Email not found!"
+        }
+        return result
     }
 }
 
+const emp = new Employee()
+
+emp.create("Wahyudi", "wahyudi@gmail.com", 20)
+emp.create("lisa", "lisa@gmail.com", 20)
+emp.create("rukia", "rukia@gmail.com", 20)
+
 const listOfEmp = emp.findAll()
-const foundEmp = emp.foundEmp()
+const foundEmpByEmail = emp.foundEmpByEmail("wahyudi@gmail")
+
+console.log(listOfEmp)
+console.log(foundEmpByEmail)
+
