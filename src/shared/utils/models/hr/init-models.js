@@ -10,6 +10,8 @@ var _region = require("./region");
 var _role_permission = require("./role_permission");
 var _user_role = require("./user_role");
 var _user = require("./user");
+var permission = require("../auth/Permission");
+var role = require("../auth/Role");
 
 function initModels(sequelize) {
   var SequelizeMetum = _SequelizeMetum(sequelize, DataTypes);

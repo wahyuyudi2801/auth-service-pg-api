@@ -3,7 +3,7 @@ const {
   User, Role, Permission,
   UserToken, OtpCode, AuditLog,
   UserRole, sequelize,
-} = require('../../shared/utils/models/auth/models');
+} = require('../../shared/utils/models/auth/index');
 
 const AuthRepository = {
 

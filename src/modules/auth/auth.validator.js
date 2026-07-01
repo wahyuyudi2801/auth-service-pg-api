@@ -84,7 +84,7 @@ const logoutSchema = z.object({
 const validate = (schema) => (req, res, next) => {
   const result = schema.safeParse(req.body);
   if (!result.success) {
-    const errors = result.error.errors.map(e => e.message);
+    const errors = result.error.issues.map(e => e.message);
     return next(new AppError('Validasi gagal', 422, errors));
   }
   req.body = result.data; // pakai data yang sudah di-filter by Zod

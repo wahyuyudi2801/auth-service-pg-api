@@ -1,16 +1,16 @@
 const { Op } = require('sequelize');
+const getModel = () => require('../../shared/utils/models/').department;
+const getLocModel = () => require('../../shared/utils/models/').location;
+const getEmpModel = () => require('../../shared/utils/models/').employee;
 
-const getModel = () => require('../../shared/utils/models').departments;
-const getLocModel = () => require('../../shared/utils/models').locations;
-const getEmpModel = () => require('../../shared/utils/models').employees;
-
+// const models = require('../../shared/utils/models/');
 
 const DepartmentRepository = {
 
     async findAll({ page = 1, limit = 10, search, locationId } = {}) {
         const Department = getModel();
         const Location = getLocModel();
-
+        
         const where = {};
         if (locationId) where.location_id = locationId;
         if (search) {
